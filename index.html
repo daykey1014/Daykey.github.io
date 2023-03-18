@@ -1,36 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Happy Birthday!</title>
-</head>
-<body>
+  <head>
+    <title>생일 축하합니다!</title>
+  </head>
+  <body>
+    <script>
+      function checkPassword() {
+        var now = new Date();
+        var birthday = new Date("March 18, 2023 00:00:00");
+        var beforeBirthday = new Date("March 17, 2023 23:00:00");
 
-	<script type="text/javascript">
-		var password = "mypassword"; // 비밀번호
-		var d = new Date();
-		var month = d.getMonth() + 1; // getMonth() 메서드는 0부터 시작하므로 1을 더해줍니다.
-		var day = d.getDate();
+        if (now >= beforeBirthday && now < birthday) {
+          alert("생일 축하 메시지는 생일날 보여집니다!");
+        } else {
+          var password = prompt("비밀번호를 입력하시오:");
 
-		// 생일인 날이거나, 3월 17일 23시 이후일 경우 비밀번호를 바꿀 수 있도록 합니다.
-		if (month === 3 && day === 18 || (day === 17 && d.getHours() >= 23)) {
-			// 생일 축하 메시지 출력
-			document.write("<h1>Happy Birthday!</h1>");
-		} else {
-			// 비밀번호 입력 폼 출력
-			document.write("<h2>Please enter password to view this page:</h2>");
-			document.write('<form onsubmit="return validate()"><input type="password" id="password"><input type="submit"></form>');
-		}
+          if (password === "1234") {
+            alert("생일 축하합니다!");
+          } else {
+            alert("잘못된 비밀번호입니다!");
+          }
+        }
+      }
 
-		function validate() {
-			var input = document.getElementById("password").value;
-			if (input === password) {
-				return true;
-			} else {
-				alert("Incorrect password. Please try again.");
-				return false;
-			}
-		}
-	</script>
-
-</body>
+      checkPassword();
+    </script>
+  </body>
 </html>

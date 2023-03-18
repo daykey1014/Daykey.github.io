@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Happy Birthday!</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		var password = "mypassword"; // 비밀번호
+		var d = new Date();
+		var month = d.getMonth() + 1; // getMonth() 메서드는 0부터 시작하므로 1을 더해줍니다.
+		var day = d.getDate();
+
+		// 생일인 날이거나, 3월 17일 23시 이후일 경우 비밀번호를 바꿀 수 있도록 합니다.
+		if (month === 3 && day === 18 || (day === 17 && d.getHours() >= 23)) {
+			// 생일 축하 메시지 출력
+			document.write("<h1>Happy Birthday!</h1>");
+		} else {
+			// 비밀번호 입력 폼 출력
+			document.write("<h2>Please enter password to view this page:</h2>");
+			document.write('<form onsubmit="return validate()"><input type="password" id="password"><input type="submit"></form>');
+		}
+
+		function validate() {
+			var input = document.getElementById("password").value;
+			if (input === password) {
+				return true;
+			} else {
+				alert("Incorrect password. Please try again.");
+				return false;
+			}
+		}
+	</script>
+
+</body>
+</html>
